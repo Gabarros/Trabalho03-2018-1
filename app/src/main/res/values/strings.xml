@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lista-Trabalho3</string>
+    <string name="titulomenu">Escolha sua Opção:</string>
+    <string name="btmecanico">Mecânico</string>
+    <string name="btoficina">OFICINA</string>
+    <string name="tvlistaoficina">Lista de Oficinas:</string>
+</resources>
