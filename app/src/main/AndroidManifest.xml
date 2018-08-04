@@ -22,7 +22,7 @@
         <activity android:name=".activity.OficinaDetalhe" />
         <activity android:name=".activity.PrincipalOficina" />
         <activity android:name=".activity.PrincipalMecanico" />
-        <activity android:name=".activity.MecanicoDetalhe"></activity>
+        <activity android:name=".activity.MecanicoDetalhe" />
     </application>
 
 </manifest>

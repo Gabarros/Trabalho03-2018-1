@@ -19,11 +19,11 @@ public class Oficina extends RealmObject{
     }
 
     public Oficina(int id, String nome, String rua, String bairro, String municipio){
-        this.id = id;
-        this.nome = nome;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.municipio = municipio;
+        this.setId(id);
+        this.setNome(nome);
+        this.setRua(rua);
+        this.setBairro(bairro);
+        this.setMunicipio(municipio);
 
     }
 

@@ -7,14 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
 
 import com.example.gabriel.lista_trabalho3.R;
-import com.example.gabriel.lista_trabalho3.adapter.OficinaAdapter;
-import com.example.gabriel.lista_trabalho3.model.Oficina;
+import com.example.gabriel.lista_trabalho3.adapter.MecanicoAdapter;
+import com.example.gabriel.lista_trabalho3.model.Mecanico;
 import com.example.gabriel.lista_trabalho3.adapter.ClickRecyclerViewListener;
 import java.util.List;
 import io.realm.Realm;
@@ -30,10 +27,10 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_oficina);
+        setContentView(R.layout.activity_lista_mecanico);
 
         realm = Realm.getDefaultInstance();
-        adiciona_mecanico = (Button) findViewById(R.id.btAdicionaOficina);
+        adiciona_mecanico = (Button) findViewById(R.id.btAdicionaMecanico) ;
 
 
         adiciona_mecanico.setOnClickListener(new View.OnClickListener() {
@@ -45,34 +42,31 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
             }
         });
 
-
     }
-
 
     protected void onResume() {
 
         super.onResume();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvOficina);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvMecanico);
 
-        recyclerView.setAdapter(new OficinaAdapter(getOficinas(),this,this));
+        recyclerView.setAdapter(new MecanicoAdapter(getMecanicos(),this,this));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
-    public List<Oficina> getOficinas(){
+    public List<Mecanico> getMecanicos(){
 
-        return realm.where(Oficina.class).findAll();
+        return realm.where(Mecanico.class).findAll();
 
     }
     @Override
     public void onClick(Object object) {
-        Oficina oficina = (Oficina) object;
+        Mecanico mecanico = (Mecanico) object;
         Intent intent = new Intent(ListaMecanico.this,MecanicoDetalhe.class);
-        intent.putExtra("id",oficina.getId());
+        intent.putExtra("id",mecanico.getId());
         startActivity(intent);
     }
-
 
     public void finish(){
         super.finish();
