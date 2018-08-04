@@ -12,14 +12,14 @@ import android.widget.Button;
 import com.example.gabriel.lista_trabalho3.R;
 import com.example.gabriel.lista_trabalho3.adapter.MecanicoAdapter;
 import com.example.gabriel.lista_trabalho3.model.Mecanico;
-import com.example.gabriel.lista_trabalho3.adapter.ClickRecyclerViewListener;
+import com.example.gabriel.lista_trabalho3.adapter.ClickRecyclerViewListener2;
 import java.util.List;
 import io.realm.Realm;
 
 
-public class ListaMecanico extends AppCompatActivity implements ClickRecyclerViewListener{
+public class ListaMecanico extends AppCompatActivity implements ClickRecyclerViewListener2{
 
-    private Realm realm;
+    private Realm realm2;
     Button adiciona_mecanico;
 
 
@@ -29,8 +29,8 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_mecanico);
 
-        realm = Realm.getDefaultInstance();
-        adiciona_mecanico = (Button) findViewById(R.id.btAdicionaMecanico) ;
+        realm2 = Realm.getDefaultInstance();
+        adiciona_mecanico = findViewById(R.id.btAdicionaMecanico) ;
 
 
         adiciona_mecanico.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +47,7 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
     protected void onResume() {
 
         super.onResume();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvMecanico);
+        RecyclerView recyclerView = findViewById(R.id.rvMecanico);
 
         recyclerView.setAdapter(new MecanicoAdapter(getMecanicos(),this,this));
 
@@ -57,7 +57,7 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
 
     public List<Mecanico> getMecanicos(){
 
-        return realm.where(Mecanico.class).findAll();
+        return realm2.where(Mecanico.class).findAll();
 
     }
     @Override
@@ -70,6 +70,6 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
 
     public void finish(){
         super.finish();
-        realm.close();
+        realm2.close();
     }
 }

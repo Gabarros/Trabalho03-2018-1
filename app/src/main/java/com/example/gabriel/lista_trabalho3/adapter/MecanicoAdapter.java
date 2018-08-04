@@ -20,12 +20,11 @@ public class MecanicoAdapter extends RecyclerView.Adapter {
 
     private Context context;
     private List<Mecanico> mecanicos;
-    private static ClickRecyclerViewListener clickRecyclerViewListener;
+    private static ClickRecyclerViewListener2 clickRecyclerViewListener;
 
-    public MecanicoAdapter(List<Mecanico> mecanicos, Context context, ClickRecyclerViewListener clickRecyclerViewListener){
-
-        this.context = context;
+    public MecanicoAdapter(List<Mecanico> mecanicos, Context context, ClickRecyclerViewListener2 clickRecyclerViewListener){
         this.mecanicos = mecanicos;
+        this.context = context;
         this.clickRecyclerViewListener = clickRecyclerViewListener;
     }
 
