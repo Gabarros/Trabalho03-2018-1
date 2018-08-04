@@ -33,7 +33,7 @@ public class OficinaDetalhe extends AppCompatActivity {
         setContentView(R.layout.activity_oficina_detalhe);
 
 
-       etnomeoficina = (EditText) findViewById(R.id.etNomeOficina);
+       etnomeoficina = (EditText) findViewById(R.id.etNomeMecanico);
        etruaoficina = (EditText) findViewById(R.id.etRuaOficina);
        etbairrooficina = (EditText) findViewById(R.id.etBairroOficina);
        etmunicipiooficina = (EditText) findViewById(R.id.etMunicipioOficina);
