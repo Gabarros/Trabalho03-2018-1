@@ -12,8 +12,6 @@ import com.example.gabriel.lista_trabalho3.model.Oficina;
 
 import java.util.ArrayList;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-
 public class OficinaAdapter extends ArrayAdapter<Oficina> {
 
     private final Context context;
@@ -36,6 +34,7 @@ public class OficinaAdapter extends ArrayAdapter<Oficina> {
         TextView nomeOficina = (TextView) rowView.findViewById(R.id.tvNomeOficina);
         TextView ruaOficina = (TextView) rowView.findViewById(R.id.tvRuaOficina);
 
+
         nomeOficina.setText(oficinas.get(position).getNome());
         ruaOficina.setText(oficinas.get(position).getRua());
 
@@ -44,4 +43,7 @@ public class OficinaAdapter extends ArrayAdapter<Oficina> {
     }
 
 
+    public ArrayList<Oficina> getOficinas() {
+        return oficinas;
+    }
 }

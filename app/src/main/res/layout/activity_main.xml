@@ -14,8 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="211dp"
         android:text="@string/btoficina"
-        android:textSize="18sp"
-        android:onClick="proximaTela"/>
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/btMecanico"
