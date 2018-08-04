@@ -42,6 +42,11 @@ public class OficinaAdapter extends ArrayAdapter<Oficina> {
 
     }
 
+    @Override
+    public int getCount() {
+        return oficinas.size();
+        // Em vez de return 0;
+    }
 
     public ArrayList<Oficina> getOficinas() {
         return oficinas;

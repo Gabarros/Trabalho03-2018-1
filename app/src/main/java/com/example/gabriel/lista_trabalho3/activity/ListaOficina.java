@@ -27,15 +27,26 @@ public class ListaOficina extends AppCompatActivity{
     private List<Oficina> listaOficinas;
 
    private Realm realm;
+   Button adiciona_oficina;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lista_oficina);
 
         realm = Realm.getDefaultInstance();
-        setContentView(R.layout.activity_lista_oficina);
+        adiciona_oficina = (Button) findViewById(R.id.btAdicionaOficina);
+
+        adiciona_oficina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListaOficina.this, OficinaDetalhe.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -43,7 +54,7 @@ public class ListaOficina extends AppCompatActivity{
         super.onStart();
         ListView lista = (ListView) findViewById(R.id.lvOficinas);
 
-       listaOficinas = (List)realm.where(Oficina.class).findAll();
+        listaOficinas = getOficinas();
         OficinaAdapter adapter = new OficinaAdapter(this, (ArrayList<Oficina>) listaOficinas);
         lista.setAdapter(adapter);
 
@@ -59,19 +70,14 @@ public class ListaOficina extends AppCompatActivity{
             }
         });
 
-        Button adicionar_oficina = (Button) findViewById(R.id.btAdicionaOficina);
 
-        Realm realm = Realm.getDefaultInstance();
+    }
 
-        adicionar_oficina.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ListaOficina.this, OficinaDetalhe.class);
-                intent.putExtra("id",0);
-                startActivity(intent);
-
-            }
-        });
+    public List<Oficina> getOficinas(){
+        realm.beginTransaction();
+       listaOficinas = (List) realm.where(Oficina.class).findAll();
+        realm.commitTransaction();
+        return listaOficinas;
     }
 
     public void finish(){

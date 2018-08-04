@@ -10,6 +10,8 @@ import android.widget.Button;
 import com.example.gabriel.lista_trabalho3.activity.ListaMecanico;
 import com.example.gabriel.lista_trabalho3.activity.ListaOficina;
 
+import io.realm.Realm;
+
 public class MainActivity extends AppCompatActivity{
 
 Button btoficina, btmecanico;
@@ -20,6 +22,10 @@ Button btoficina, btmecanico;
         setContentView(R.layout.activity_main);
         btoficina = (Button) findViewById(R.id.btOficina);
         btmecanico = (Button) findViewById(R.id.btMecanico);
+
+        Realm realm = Realm.getDefaultInstance();
+
+        realm.close();
 
 
         btoficina.setOnClickListener(new View.OnClickListener() {
