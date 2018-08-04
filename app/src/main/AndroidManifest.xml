@@ -20,7 +20,8 @@
         <activity android:name=".activity.ListaOficina" />
         <activity android:name=".activity.ListaMecanico" />
         <activity android:name=".activity.OficinaDetalhe" />
-        <activity android:name=".activity.PrincipalOficina"></activity>
+        <activity android:name=".activity.PrincipalOficina" />
+        <activity android:name=".activity.PrincipalMecanico"></activity>
     </application>
 
 </manifest>

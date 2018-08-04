@@ -18,12 +18,9 @@ import io.realm.Realm;
 public class OficinaDetalhe extends AppCompatActivity {
 
 
-    EditText etnomeoficina = (EditText) findViewById(R.id.etNomeOficina);
-    EditText etruaoficina = (EditText) findViewById(R.id.etRuaOficina);
-    EditText etbairrooficina = (EditText) findViewById(R.id.etBairroOficina);
-    EditText etmunicipiooficina = (EditText) findViewById(R.id.etMunicipioOficina);
 
     Button btsalvar, btalterar, btdeletar;
+    EditText etnomeoficina, etruaoficina, etbairrooficina, etmunicipiooficina;
 
     int id;
     Oficina oficina;
@@ -34,6 +31,12 @@ public class OficinaDetalhe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oficina_detalhe);
+
+
+       etnomeoficina = (EditText) findViewById(R.id.etNomeOficina);
+       etruaoficina = (EditText) findViewById(R.id.etRuaOficina);
+       etbairrooficina = (EditText) findViewById(R.id.etBairroOficina);
+       etmunicipiooficina = (EditText) findViewById(R.id.etMunicipioOficina);
 
         btsalvar = (Button) findViewById(R.id.btOkOficina);
         btdeletar = (Button) findViewById(R.id.btDeletarOficina);
@@ -74,6 +77,7 @@ public class OficinaDetalhe extends AppCompatActivity {
                 salvar();
             }
         });
+
         btalterar.setOnClickListener( new View.OnClickListener(){
 
             @Override
@@ -126,7 +130,7 @@ public class OficinaDetalhe extends AppCompatActivity {
 
         oficina.setNome(etnomeoficina.getText().toString());
         oficina.setRua(etruaoficina.getText().toString());
-        
+
     }
     public void alterar() {
 
@@ -142,8 +146,5 @@ public class OficinaDetalhe extends AppCompatActivity {
         this.finish();
 
     }
-
-
-
 
 }
