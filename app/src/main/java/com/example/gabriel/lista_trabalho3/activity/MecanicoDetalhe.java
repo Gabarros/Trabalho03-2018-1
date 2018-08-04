@@ -3,8 +3,6 @@ package com.example.gabriel.lista_trabalho3.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-
-import com.example.gabriel.lista_trabalho3.R;
 public class MecanicoDetalhe extends AppCompatActivity {
 
     @Override
