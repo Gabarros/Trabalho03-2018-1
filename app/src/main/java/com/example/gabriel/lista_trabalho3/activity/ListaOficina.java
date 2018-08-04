@@ -3,28 +3,24 @@ package com.example.gabriel.lista_trabalho3.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 
 import com.example.gabriel.lista_trabalho3.R;
 import com.example.gabriel.lista_trabalho3.adapter.OficinaAdapter;
 import com.example.gabriel.lista_trabalho3.model.Oficina;
-
-
-import java.util.ArrayList;
+import com.example.gabriel.lista_trabalho3.adapter.ClickRecyclerViewListener;
 import java.util.List;
-
-
 import io.realm.Realm;
 
 
-public class ListaOficina extends AppCompatActivity{
-
-    private List<Oficina> listaOficinas;
+public class ListaOficina extends AppCompatActivity implements ClickRecyclerViewListener{
 
    private Realm realm;
    Button adiciona_oficina;
@@ -39,10 +35,12 @@ public class ListaOficina extends AppCompatActivity{
         realm = Realm.getDefaultInstance();
         adiciona_oficina = (Button) findViewById(R.id.btAdicionaOficina);
 
+
         adiciona_oficina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListaOficina.this, OficinaDetalhe.class);
+                intent.putExtra("id",0);
                 startActivity(intent);
             }
         });
@@ -50,39 +48,34 @@ public class ListaOficina extends AppCompatActivity{
 
     }
 
-    public void onStart(){
-        super.onStart();
-        ListView lista = (ListView) findViewById(R.id.lvOficinas);
 
-        listaOficinas = getOficinas();
-        OficinaAdapter adapter = new OficinaAdapter(this, (ArrayList<Oficina>) listaOficinas);
-        lista.setAdapter(adapter);
+    protected void onResume() {
 
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        super.onResume();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvOficina);
 
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(ListaOficina.this, OficinaDetalhe.class);
+        recyclerView.setAdapter(new OficinaAdapter(getOficinas(),this,this));
 
-                intent.putExtra("id",listaOficinas.get(i).getId());
-                startActivity(intent);
-
-            }
-        });
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
     public List<Oficina> getOficinas(){
-        realm.beginTransaction();
-       listaOficinas = (List) realm.where(Oficina.class).findAll();
-        realm.commitTransaction();
-        return listaOficinas;
+
+        return realm.where(Oficina.class).findAll();
+
     }
+    @Override
+    public void onClick(Object object) {
+        Oficina oficina = (Oficina) object;
+        Intent intent = new Intent(ListaOficina.this,OficinaDetalhe.class);
+        intent.putExtra("id",oficina.getId());
+        startActivity(intent);
+    }
+
 
     public void finish(){
         super.finish();
-           realm.close();
-
+        realm.close();
     }
 }
