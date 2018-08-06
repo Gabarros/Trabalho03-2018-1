@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 import com.example.gabriel.lista_trabalho3.R;
 import com.example.gabriel.lista_trabalho3.model.Mecanico;
@@ -121,7 +122,7 @@ public class MecanicoDetalhe extends AppCompatActivity {
 
         int proximoID = 1;
         if(realm.where(Mecanico.class).max("id") !=null)
-            proximoID = realm.where(Mecanico.class).max("id").intValue()+1;
+            proximoID = Objects.requireNonNull(realm.where(Mecanico.class).max("id")).intValue()+1;
 
         realm.beginTransaction();
         Mecanico mecanico = new Mecanico();

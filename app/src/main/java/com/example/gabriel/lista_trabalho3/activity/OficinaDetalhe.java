@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.example.gabriel.lista_trabalho3.R;
 import com.example.gabriel.lista_trabalho3.model.Oficina;
 
+import java.util.Objects;
+
 import io.realm.Realm;
 
 public class OficinaDetalhe extends AppCompatActivity {
@@ -42,7 +44,7 @@ public class OficinaDetalhe extends AppCompatActivity {
 
         btsalvar = (Button) findViewById(R.id.btOkOficina);
         btdeletar = (Button) findViewById(R.id.btDeletarOficina);
-        btalterar = (Button) findViewById(R.id.btDeletarOficina);
+        btalterar = (Button) findViewById(R.id.btAlterarOficina);
 
         Intent intent = getIntent();
         id = (int) intent.getSerializableExtra("id");
@@ -114,7 +116,7 @@ public class OficinaDetalhe extends AppCompatActivity {
 
         int proximoID = 1;
         if(realm.where(Oficina.class).max("id") !=null)
-            proximoID = realm.where(Oficina.class).max("id").intValue()+1;
+            proximoID = Objects.requireNonNull(realm.where(Oficina.class).max("id")).intValue()+1;
 
         realm.beginTransaction();
         Oficina oficina = new Oficina();
