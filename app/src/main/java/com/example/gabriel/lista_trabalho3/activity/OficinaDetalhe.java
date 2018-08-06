@@ -132,9 +132,6 @@ public class OficinaDetalhe extends AppCompatActivity {
         oficina.setBairro(etbairrooficina.getText().toString());
         oficina.setMunicipio(etbairrooficina.getText().toString());
 
-        realm.copyToRealm(oficina);
-        realm.commitTransaction();
-        realm.close();
 
     }
     public void alterar() {

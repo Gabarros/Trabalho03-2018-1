@@ -58,7 +58,7 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
 
     public List<Mecanico> getMecanicos(){
 
-        return (List) realm2.where(Mecanico.class).findAll();
+        return realm2.where(Mecanico.class).findAll();
 
     }
     @Override

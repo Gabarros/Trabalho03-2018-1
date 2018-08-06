@@ -32,7 +32,7 @@ public class PrincipalOficina extends AppCompatActivity implements AdapterView.O
 
         try {
 
-            Class obj = Class.forName ("com.example.gabriel.lista_trabalho3.activity"+activities[position]);
+            Class obj = Class.forName ("com.example.gabriel.lista_trabalho3.activity."+activities[position]);
             intent = new Intent(this, obj);
 
         } catch (ClassNotFoundException e) {

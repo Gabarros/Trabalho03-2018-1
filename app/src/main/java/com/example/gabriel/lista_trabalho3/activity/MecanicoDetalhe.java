@@ -63,6 +63,10 @@ public class MecanicoDetalhe extends AppCompatActivity {
 
             etNome.setText(mecanico.getNome());
             etFuncao.setText(mecanico.getFuncao());
+            etData.setText(formato.format(mecanico.getData_nascimento()));
+            etRua.setText(mecanico.getRua());
+            etBairro.setText(mecanico.getBairro());
+            etMunicipio.setText(mecanico.getMunicipio());
 
         }else{
             btalterar.setEnabled(false);
@@ -73,8 +77,6 @@ public class MecanicoDetalhe extends AppCompatActivity {
             btdeletar.setVisibility(View.INVISIBLE);
 
         }
-
-
 
         btsalvar.setOnClickListener( new View.OnClickListener(){
 
@@ -144,11 +146,6 @@ public class MecanicoDetalhe extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-        realm2.copyToRealm(mecanico);
-        realm2.commitTransaction();
-        realm2.close();
-
 
 
     }
