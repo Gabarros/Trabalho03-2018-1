@@ -26,7 +26,7 @@ public class MecanicoDetalhe extends AppCompatActivity {
 
     int id;
     Mecanico mecanico;
-    private Realm realm2;
+    private Realm realm;
 
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -51,14 +51,14 @@ public class MecanicoDetalhe extends AppCompatActivity {
 
         Intent intent    = getIntent();
         id = (int) intent.getSerializableExtra("id");
-        realm2 = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
 
         if (id !=0) {
             btsalvar.setEnabled(false);
             btsalvar.setClickable(false);
             btsalvar.setVisibility(View.INVISIBLE);
 
-            mecanico = realm2.where(Mecanico.class).equalTo("id",id).findFirst();
+            mecanico = realm.where(Mecanico.class).equalTo("id",id).findFirst();
 
 
             etNome.setText(mecanico.getNome());
@@ -103,10 +103,10 @@ public class MecanicoDetalhe extends AppCompatActivity {
     }
 
     public void deletar(){
-        realm2.beginTransaction();
+        realm.beginTransaction();
         mecanico.deleteFromRealm();
-        realm2.commitTransaction();
-        realm2.close();
+        realm.commitTransaction();
+        realm.close();
 
         Toast.makeText(this,"Mecanico deletado",Toast.LENGTH_LONG).show();
         this.finish();
@@ -116,17 +116,17 @@ public class MecanicoDetalhe extends AppCompatActivity {
     public void salvar() {
 
         int proximoID = 1;
-        if(realm2.where(Mecanico.class).max("id") !=null)
-            proximoID = realm2.where(Mecanico.class).max("id").intValue()+1;
+        if(realm.where(Mecanico.class).max("id") !=null)
+            proximoID = realm.where(Mecanico.class).max("id").intValue()+1;
 
-        realm2.beginTransaction();
+        realm.beginTransaction();
         Mecanico mecanico = new Mecanico();
         mecanico.setId(proximoID);
         setEGrava(mecanico);
 
-        realm2.copyToRealm(mecanico);
-        realm2.commitTransaction();
-        realm2.close();
+        realm.copyToRealm(mecanico);
+        realm.commitTransaction();
+        realm.close();
 
         Toast.makeText(this,"Mecanico Cadastrado",Toast.LENGTH_LONG).show();
         this.finish();
@@ -151,13 +151,13 @@ public class MecanicoDetalhe extends AppCompatActivity {
     }
     public void alterar() {
 
-        realm2.beginTransaction();
+        realm.beginTransaction();
 
         setEGrava(mecanico);
 
-        realm2.copyToRealm(mecanico);
-        realm2.commitTransaction();
-        realm2.close();
+        realm.copyToRealm(mecanico);
+        realm.commitTransaction();
+        realm.close();
 
         Toast.makeText(this,"Mecanico Alterado",Toast.LENGTH_LONG).show();
         this.finish();

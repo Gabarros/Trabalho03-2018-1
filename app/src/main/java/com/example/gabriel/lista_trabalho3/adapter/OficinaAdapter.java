@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.gabriel.lista_trabalho3.R;
@@ -67,7 +66,7 @@ public class OficinaAdapter extends RecyclerView.Adapter {
         public OficinaViewHolder(View itemView) {
             super(itemView);
             nomeOficina = (TextView) itemView.findViewById(R.id.tvNomeOficina);
-            ruaOficina = (TextView) itemView.findViewById(R.id.tvRuaOficina);
+            ruaOficina = (TextView) itemView.findViewById(R.id.tvNomeOficina);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

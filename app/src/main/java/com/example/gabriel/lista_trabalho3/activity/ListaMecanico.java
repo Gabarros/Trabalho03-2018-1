@@ -12,16 +12,14 @@ import android.widget.Button;
 import com.example.gabriel.lista_trabalho3.R;
 import com.example.gabriel.lista_trabalho3.adapter.MecanicoAdapter;
 import com.example.gabriel.lista_trabalho3.model.Mecanico;
-import com.example.gabriel.lista_trabalho3.adapter.ClickRecyclerViewListener2;
+import com.example.gabriel.lista_trabalho3.adapter.ClickRecyclerViewListener;
 import java.util.List;
 import io.realm.Realm;
 
 
-public class ListaMecanico extends AppCompatActivity implements ClickRecyclerViewListener2{
+public class ListaMecanico extends AppCompatActivity implements ClickRecyclerViewListener{
 
-    private Realm realm2;
-
-
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +28,7 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
         setContentView(R.layout.activity_lista_mecanico);
         Button adiciona_mecanico;
 
-        realm2 = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
         adiciona_mecanico = findViewById(R.id.btAdicionaMecanico) ;
 
 
@@ -50,7 +48,7 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
         super.onResume();
         RecyclerView recyclerView = findViewById(R.id.rvMecanico);
 
-        recyclerView.setAdapter(new MecanicoAdapter(getMecanicos(),this,this));
+        recyclerView.setAdapter(new MecanicoAdapter(getMecanicos(), this, this));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -58,7 +56,7 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
 
     public List<Mecanico> getMecanicos(){
 
-        return realm2.where(Mecanico.class).findAll();
+        return realm.where(Mecanico.class).findAll();
 
     }
     @Override
@@ -71,6 +69,6 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
 
     public void finish(){
         super.finish();
-        realm2.close();
+        realm.close();
     }
 }

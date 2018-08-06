@@ -16,6 +16,7 @@ public class Oficina extends RealmObject implements Serializable{
     private long latitude;
     private long longitude;
 
+
     public Oficina(){
 
     }
