@@ -9,6 +9,8 @@ import android.widget.Button;
 
 import com.example.gabriel.lista_trabalho3.activity.ListaMecanico;
 import com.example.gabriel.lista_trabalho3.activity.ListaOficina;
+import com.example.gabriel.lista_trabalho3.activity.PrincipalMecanico;
+import com.example.gabriel.lista_trabalho3.activity.PrincipalOficina;
 
 import io.realm.Realm;
 
@@ -31,7 +33,7 @@ Button btoficina, btmecanico;
         btoficina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListaOficina.class);
+                Intent intent = new Intent(MainActivity.this, PrincipalOficina.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +41,7 @@ Button btoficina, btmecanico;
         btmecanico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListaMecanico.class);
+                Intent intent = new Intent(MainActivity.this, PrincipalMecanico.class);
                 startActivity(intent);
             }
         });
