@@ -46,7 +46,6 @@ public class MecanicoAdapter extends RecyclerView.Adapter {
 
         Mecanico mecanico  = this.mecanicos.get(position) ;
 
-
         mecanicoHolder.nomeMecanico.setText(mecanico.getNome());
         mecanicoHolder.funcaoMecanico.setText(mecanico.getFuncao());
 
