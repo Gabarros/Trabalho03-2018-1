@@ -1,11 +1,12 @@
 package com.example.gabriel.lista_trabalho3.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Mecanico extends RealmObject {
+public class Mecanico extends RealmObject implements Serializable {
 
     @PrimaryKey
     private int id;

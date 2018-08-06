@@ -23,7 +23,7 @@ import io.realm.Realm;
 public class ListaOficina extends AppCompatActivity implements ClickRecyclerViewListener{
 
    private Realm realm;
-   Button adiciona_oficina;
+
 
 
     @Override
@@ -31,6 +31,7 @@ public class ListaOficina extends AppCompatActivity implements ClickRecyclerView
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_oficina);
+        Button adiciona_oficina;
 
         realm = Realm.getDefaultInstance();
         adiciona_oficina = (Button) findViewById(R.id.btAdicionaOficina);

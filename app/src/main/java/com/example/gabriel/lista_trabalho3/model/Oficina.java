@@ -1,9 +1,11 @@
 package com.example.gabriel.lista_trabalho3.model;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Oficina extends RealmObject{
+public class Oficina extends RealmObject implements Serializable{
 
     @PrimaryKey
     private int id;

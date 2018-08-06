@@ -44,7 +44,6 @@ public class OficinaDetalhe extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = (int) intent.getSerializableExtra("id");
-
         realm = Realm.getDefaultInstance();
 
         if (id !=0) {
