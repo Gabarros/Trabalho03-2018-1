@@ -20,7 +20,7 @@ import com.example.gabriel.lista_trabalho3.model.Mecanico;
 import io.realm.Realm;
 
 public class MecanicoDetalhe extends AppCompatActivity {
-    EditText etNome, etFuncao, etData, etRua, etBairro, etMunicipio;
+    EditText etNome, etFuncao, etData, etRua, etBairro, etMunicipio, etlatitude, etlongitude;
 
     Button btsalvar, btalterar, btdeletar;
 
@@ -43,6 +43,8 @@ public class MecanicoDetalhe extends AppCompatActivity {
         etBairro = (EditText) findViewById(R.id.etBairroMecanico);
         etMunicipio = (EditText) findViewById(R.id.etMunicipioMecanico);
         etData = (EditText) findViewById(R.id.etDataMecanico);
+        etlatitude = (EditText) findViewById(R.id.etLatitudeMecanico);
+        etlongitude  = findViewById(R.id.etLongitudeMecanico);
 
         btsalvar = (Button) findViewById(R.id.btOkMecanico);
         btalterar = (Button) findViewById(R.id.btAlterarMecanico);
@@ -67,6 +69,8 @@ public class MecanicoDetalhe extends AppCompatActivity {
             etRua.setText(mecanico.getRua());
             etBairro.setText(mecanico.getBairro());
             etMunicipio.setText(mecanico.getMunicipio());
+            etlatitude.setText(String.valueOf(mecanico.getLatitude()));
+            etlongitude.setText(String.valueOf(mecanico.getLongitude()));
 
         }else{
             btalterar.setEnabled(false);
@@ -140,6 +144,8 @@ public class MecanicoDetalhe extends AppCompatActivity {
         mecanico.setRua(etRua.getText().toString());
         mecanico.setBairro(etBairro.getText().toString());
         mecanico.setMunicipio(etMunicipio.getText().toString());
+        mecanico.setLongitude((long) Float.parseFloat(etlongitude.getText().toString()));
+        mecanico.setLatitude((long) Float.parseFloat(etlatitude.getText().toString()));
 
         try {
             mecanico.setData_nascimento((Date) formato.parse(etData.getText().toString()));

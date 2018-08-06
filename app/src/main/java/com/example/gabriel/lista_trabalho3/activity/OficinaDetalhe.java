@@ -20,7 +20,7 @@ public class OficinaDetalhe extends AppCompatActivity {
 
 
     Button btsalvar, btalterar, btdeletar;
-    EditText etnomeoficina, etruaoficina, etbairrooficina, etmunicipiooficina;
+    EditText etnomeoficina, etruaoficina, etbairrooficina, etmunicipiooficina, etlatitude, etlongitude;
 
     int id;
     Oficina oficina;
@@ -37,6 +37,8 @@ public class OficinaDetalhe extends AppCompatActivity {
        etruaoficina = (EditText) findViewById(R.id.etRuaOficina);
        etbairrooficina = (EditText) findViewById(R.id.etBairroOficina);
        etmunicipiooficina = (EditText) findViewById(R.id.etMunicipioOficina);
+       etlatitude = findViewById(R.id.etLatitudeOficina);
+       etlongitude = findViewById(R.id.etLongitudeOficina);
 
         btsalvar = (Button) findViewById(R.id.btOkOficina);
         btdeletar = (Button) findViewById(R.id.btDeletarOficina);
@@ -58,6 +60,9 @@ public class OficinaDetalhe extends AppCompatActivity {
             etruaoficina.setText(oficina.getRua());
             etbairrooficina.setText(oficina.getBairro());
             etmunicipiooficina.setText(oficina.getMunicipio());
+            etlatitude.setText(String.valueOf(oficina.getLatitude()));
+            etlongitude.setText(String.valueOf(oficina.getLongitude()));
+
 
         }else{
             btalterar.setEnabled(false);
@@ -131,6 +136,8 @@ public class OficinaDetalhe extends AppCompatActivity {
         oficina.setRua(etruaoficina.getText().toString());
         oficina.setBairro(etbairrooficina.getText().toString());
         oficina.setMunicipio(etbairrooficina.getText().toString());
+        oficina.setLongitude((long) Float.parseFloat(etlongitude.getText().toString()));
+        oficina.setLatitude((long) Float.parseFloat(etlatitude.getText().toString()));
 
 
     }
