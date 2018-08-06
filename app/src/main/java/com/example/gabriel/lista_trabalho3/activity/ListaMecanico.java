@@ -20,7 +20,7 @@ import io.realm.Realm;
 public class ListaMecanico extends AppCompatActivity implements ClickRecyclerViewListener2{
 
     private Realm realm2;
-    Button adiciona_mecanico;
+
 
 
     @Override
@@ -28,6 +28,7 @@ public class ListaMecanico extends AppCompatActivity implements ClickRecyclerVie
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_mecanico);
+        Button adiciona_mecanico;
 
         realm2 = Realm.getDefaultInstance();
         adiciona_mecanico = findViewById(R.id.btAdicionaMecanico) ;
